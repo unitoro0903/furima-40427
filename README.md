@@ -30,11 +30,11 @@ Things you may want to cover:
 | Column             | Type                | Options                   |
 |--------------------|---------------------|---------------------------|
 | email              | string              | null: false, unique: true |
-| password           | string              | null: false               |
-| name               | string              | null: false               |
+| encrypted_password | string              | null: false               |
+| kanjiname          | string              | null: false               |
+| kananame           | string              | null: false               |
 | nickname           | string              | null: false               |
-| birthday           | string              | null: false               |
-| address            | text                | null: false               |
+| birthday           | date                | null: false               |
 
 ### Association
 
@@ -46,12 +46,11 @@ Things you may want to cover:
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | title                               | string     | null: false                    |
-| price                               | string     | null: false                    |
+| price                               | integer    | null: false                    |
 | user(出品者)                        | references  | null: false, foreign_key: true |
-| image                               | text       | null: false                    |
 | explanation                         | string     | null: false                    |
-| category                            | string     | null: false                    |
-| condition                           | string     | null: false                    |
+| category.id                         | integer     | null: false                    |
+| condition.id                        | integer     | null: false                    |
 
 
 
@@ -76,11 +75,10 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| region      | text       | null: false                    |
-| item(商品のID)　| references | null: false, foreign_key: true |
-| record(購入情報のid) | references | null: false, foreign_key: true |
-| shipfee        | string     | null: false                    |
-| recuiretime | string | null: false, |
+| region.id   | integer    | null: false                    |
+| record      | references | null: false, foreign_key: true |
+| shipfee     | string     | null: false                    |
+| recuiretime | string     | null: false                    |
 
 
 ### Association
