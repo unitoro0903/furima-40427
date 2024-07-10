@@ -32,6 +32,9 @@ Things you may want to cover:
 | email              | string              | null: false, unique: true |
 | password           | string              | null: false               |
 | name               | string              | null: false               |
+| nickname           | string              | null: false               |
+| birthday           | string              | null: false               |
+| address            | text                | null: false               |
 
 ### Association
 
@@ -44,12 +47,18 @@ Things you may want to cover:
 |-------------------------------------|------------|--------------------------------|
 | title                               | string     | null: false                    |
 | price                               | string     | null: false                    |
-| user(出品者)                        | references | null: false, foreign_key: true |
+| user(出品者)                        | references  | null: false, foreign_key: true |
+| image                               | text       | null: false                    |
+| explanation                         | string     | null: false                    |
+| category                            | string     | null: false                    |
+| condition                           | string     | null: false                    |
+
+
 
 ### Association
 
-- belongs_to :users
-- belongs_to :records
+- belongs_to :user
+- belongs_to :record
 
 ## records table
 
@@ -60,18 +69,21 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :items
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 ## ships table
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| address     | text       | null: false                    |
-| item        | references | null: false, foreign_key: true |
-| record      | references | null: false, foreign_key: true |
+| region      | text       | null: false                    |
+| item(商品のID)　| references | null: false, foreign_key: true |
+| record(購入情報のid) | references | null: false, foreign_key: true |
+| shipfee        | string     | null: false                    |
+| recuiretime | string | null: false, |
+
 
 ### Association
 
-- belongs_to :items
-- belongs_to :records
+- belongs_to :item
+- belongs_to :record
