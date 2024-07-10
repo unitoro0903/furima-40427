@@ -31,8 +31,10 @@ Things you may want to cover:
 |--------------------|---------------------|---------------------------|
 | email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
-| kanjiname          | string              | null: false               |
-| kananame           | string              | null: false               |
+| kanjifirstname     | string              | null: false               |
+| kanjifamilyname    | string              | null: false               |
+| kanafirstname      | string              | null: false               |
+| kanafamilyname     | string              | null: false               |
 | nickname           | string              | null: false               |
 | birthday           | date                | null: false               |
 
@@ -43,21 +45,21 @@ Things you may want to cover:
 
 ## items table
 
-| Column                              | Type       | Options                        |
-|-------------------------------------|------------|--------------------------------|
-| title                               | string     | null: false                    |
-| price                               | integer    | null: false                    |
-| user(出品者)                        | references  | null: false, foreign_key: true |
-| explanation                         | string     | null: false                    |
-| category.id                         | integer     | null: false                    |
-| condition.id                        | integer     | null: false                    |
+| Column             | Type              |Options                 |
+|--------------------|-------------------|------------------------|
+| title              | string            | null: false            |
+| price              | integer           | null: false            |
+| user.id            | references | null: false, foreign_key: true |
+| explanation        | string     | null: false                   |
+| category.id        | integer           | null: false              |
+| condition.id      | integer           |null:false                 |
 
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :record
+- has_one :record
 
 ## records table
 
@@ -70,6 +72,8 @@ Things you may want to cover:
 
 - belongs_to :item
 - belongs_to :user
+- has_one :ship
+
 
 ## ships table
 
@@ -77,11 +81,13 @@ Things you may want to cover:
 |-------------|------------|--------------------------------|
 | region.id   | integer    | null: false                    |
 | record      | references | null: false, foreign_key: true |
-| shipfee     | string     | null: false                    |
-| recuiretime | string     | null: false                    |
-
+| shipfee.id  | string     | null: false                    |
+| recuiretime.id | string     | null: false                 |
+| shikutyouson  | string     | null:false                     |
+| banchi      | string     | null:false                     |
+| phonenumber | string     | null:false                     |
+| postcode    | string     | null:false                     |
 
 ### Association
 
-- belongs_to :item
 - belongs_to :record
