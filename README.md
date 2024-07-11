@@ -88,7 +88,7 @@ Things you may want to cover:
 | street_address      | string     | null:false             |
 | phone_number | string     | null:false                     |
 | postcode    | string     | null:false                     |
-| building_name      | string     | null:false             |
+| building_name      | string     | 　　　　　　             |
 
 ### Association
 
