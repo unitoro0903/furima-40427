@@ -50,7 +50,7 @@ Things you may want to cover:
 | title              | string            | null: false            |
 | price              | integer           | null: false            |
 | user            | references | null: false, foreign_key: true |
-| explanation        | string     | null: false                   |
+| explanation        | text      | null: false                   |
 | category_id        | integer           | null: false              |
 | condition_id      | integer           |null:false                 |
 | region_id   | integer    | null: false                    |
