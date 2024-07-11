@@ -31,10 +31,10 @@ Things you may want to cover:
 |--------------------|---------------------|---------------------------|
 | email              | string              | null: false, unique: true |
 | encrypted_password | string              | null: false               |
-| kanjifirstname     | string              | null: false               |
-| kanjifamilyname    | string              | null: false               |
-| kanafirstname      | string              | null: false               |
-| kanafamilyname     | string              | null: false               |
+| first_name_kanji   | string              | null: false               |
+| family_name_kanji  | string              | null: false               |
+| first_name_kana    | string              | null: false               |
+| family_name_kana   | string              | null: false               |
 | nickname           | string              | null: false               |
 | birthday           | date                | null: false               |
 
@@ -49,10 +49,13 @@ Things you may want to cover:
 |--------------------|-------------------|------------------------|
 | title              | string            | null: false            |
 | price              | integer           | null: false            |
-| user.id            | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 | explanation        | string     | null: false                   |
-| category.id        | integer           | null: false              |
-| condition.id      | integer           |null:false                 |
+| category_id        | integer           | null: false              |
+| condition_id      | integer           |null:false                 |
+| region_id   | integer    | null: false                    |
+| ship_fee_id  | integer     | null: false                    |
+| require_time_id | integer  | null: false                 |
 
 
 
@@ -79,14 +82,13 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| region.id   | integer    | null: false                    |
+| region_id   | integer    | null: false                    |
 | record      | references | null: false, foreign_key: true |
-| shipfee.id  | string     | null: false                    |
-| recuiretime.id | string     | null: false                 |
-| shikutyouson  | string     | null:false                     |
-| banchi      | string     | null:false                     |
-| phonenumber | string     | null:false                     |
+| municipalities  | string     | null:false                 |
+| street_address      | string     | null:false             |
+| phone_number | string     | null:false                     |
 | postcode    | string     | null:false                     |
+| building_name      | string     | null:false             |
 
 ### Association
 
