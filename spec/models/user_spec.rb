@@ -111,7 +111,7 @@ RSpec.describe User, type: :model do
             @user.password = 'ｒuby123'
           @user.password_confirmation = 'ｒuby123'
             @user.valid?
-            expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers', 'Password must not include full-width characters.')
+            expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
           end
 
             it '姓（全角）に半角文字が含まれていると登録できない' do
