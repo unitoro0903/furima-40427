@@ -14,7 +14,7 @@ def create
     redirect_to root_path
   else
     p @item.errors.full_messages
-    render :new
+    render :new, status: :unprocessable_entity
   end
 end
 
