@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :region
   belongs_to_active_hash :require_time
 
+  validates :image, presence: true
   validates :title, presence: true
   validates :explanation, presence: true
   validates :category_id, numericality: { other_than: 0 , message: "can't be blank"}
