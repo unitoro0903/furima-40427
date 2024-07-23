@@ -41,6 +41,21 @@ def update
   end
 end
 
+def destroy
+  item = Item.find(params[:id])
+  if current_user.id == item.user_id
+    if item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path, flash: { error: "Item could not be deleted." }
+    end
+  else
+    flash[:alert] = 'Not authorized to delete this item'
+    redirect_to item_path(item)
+  end
+end
+
+
 private
 def item_params
   params.require(:item).permit(:image, :title, :explanation, :category_id, :condition_id, :ship_fee_id, :region_id, :require_time_id, :price)
