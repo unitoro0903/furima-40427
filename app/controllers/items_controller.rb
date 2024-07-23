@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update]
 
   def index
@@ -40,6 +40,22 @@ def update
     render :edit, status: :unprocessable_entity
   end
 end
+
+def destroy
+  item = Item.find(params[:id])
+  if current_user.id == item.user_id
+    # if 
+    item.destroy
+    redirect_to root_path
+  else
+      redirect_to root_path, flash: { error: "Item could not be deleted." }
+  end
+  # else
+    # flash[:alert] = 'Not authorized to delete this item'
+    # redirect_to item_path(item)
+  # end
+ end
+
 
 private
 def item_params
