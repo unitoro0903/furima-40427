@@ -43,17 +43,18 @@ end
 
 def destroy
   item = Item.find(params[:id])
-  # if current_user.id == item.user_id
-    if item.destroy
-      redirect_to root_path
-    else
+  if current_user.id == item.user_id
+    # if 
+    item.destroy
+    redirect_to root_path
+  else
       redirect_to root_path, flash: { error: "Item could not be deleted." }
-    end
+  end
   # else
     # flash[:alert] = 'Not authorized to delete this item'
     # redirect_to item_path(item)
-  end
-# end
+  # end
+ end
 
 
 private
