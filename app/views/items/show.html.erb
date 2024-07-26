@@ -32,7 +32,7 @@
 
             
              <% elsif  current_user.id != @item.user_id %><%#&& @item.sold_out == false%>
-             <%= link_to "購入画面に進む", "#" ,  data: { turbo: false }, class:"item-red-btn"%>
+             <%= link_to "購入画面に進む", item_records_path(@item) ,  data: { turbo: false }, class:"item-red-btn"%>
             
          <% end %> 
     <% end %> 
