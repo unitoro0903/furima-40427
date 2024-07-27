@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_item, only: [:edit, :show, :update]
-
+  before_action :redirect_if_sold_out, only: [:edit, :update]
   def index
     @items = Item.order(created_at: :desc)
   end
@@ -56,8 +56,12 @@ def destroy
   # end
  end
 
+ 
+
+
 
 private
+
 def item_params
   params.require(:item).permit(:image, :title, :explanation, :category_id, :condition_id, :ship_fee_id, :region_id, :require_time_id, :price)
 end
@@ -65,4 +69,13 @@ end
 def set_item
 @item = Item.find(params[:id])
 end
+
+def redirect_if_sold_out
+  @item = Item.find(params[:id])
+  if @item.sold_out?
+    redirect_to root_path
+  end
 end
+
+end
+

@@ -78,16 +78,16 @@ Things you may want to cover:
 - has_one :ship
 
 
-## ships table
+## addresses table
 
 | Column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
 | region_id   | integer    | null: false                    |
 | record      | references | null: false, foreign_key: true |
-| municipalities  | string     | null:false                 |
-| street_address      | string     | null:false             |
+| city        | string     | null:false                 |
+| house_number      | string     | null:false             |
 | phone_number | string     | null:false                     |
-| postcode    | string     | null:false                     |
+| postal_code    | string     | null:false                     |
 | building_name      | string     | 　　　　　　             |
 
 ### Association
