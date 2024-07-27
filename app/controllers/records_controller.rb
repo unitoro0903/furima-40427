@@ -1,10 +1,11 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_if_owner_or_sold_out, only: :index
+  before_action :set_item, only: [:index, :create]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
+    set_item
     @record_address = RecordAddress.new
   end
 
@@ -13,7 +14,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    set_item
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       pay_item
@@ -54,7 +55,9 @@ end
 # def address_params
   # params.permit(:postal_code, :region_id, :city, :house_number, :building_name, :phone_number).merge(record_id: @record.id)
 # end
-
+def set_item
+  @item = Item.find(params[:item_id])
+end
 
 # end
 
