@@ -42,10 +42,10 @@ RSpec.describe RecordAddress, type: :model do
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Postal code can't be blank")
       end
-      it 'region_idが空だと保存できないこと' do
-        @record_address.region_id = ""
+      it 'region_idが0だと保存できないこと' do
+        @record_address.region_id = 0
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Region can't be blank")
+        expect(@record_address.errors.full_messages).to include("Region を選択してください")
       end
       it 'cityが空だと保存できないこと' do
         @record_address.city= ""
