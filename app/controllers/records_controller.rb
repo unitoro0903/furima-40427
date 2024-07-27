@@ -44,7 +44,7 @@ def pay_item
 end
 
 def redirect_if_owner_or_sold_out
-  @item = Item.find(params[:item_id])
+  
   if @item.sold_out? || current_user.id == @item.user_id
     redirect_to root_path
   end
