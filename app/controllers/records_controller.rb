@@ -1,7 +1,8 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_if_owner_or_sold_out, only: :index
   before_action :set_item, only: [:index, :create]
+  before_action :redirect_if_owner_or_sold_out, only: :index
+
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
