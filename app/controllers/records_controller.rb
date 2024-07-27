@@ -5,14 +5,12 @@ class RecordsController < ApplicationController
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    set_item
     @record_address = RecordAddress.new
   end
 
   
 
   def create
-    set_item
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       pay_item
@@ -55,6 +53,8 @@ end
 # end
 def set_item
   @item = Item.find(params[:item_id])
+end
+
 end
 
 
