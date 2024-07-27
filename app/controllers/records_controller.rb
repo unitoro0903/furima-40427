@@ -9,9 +9,7 @@ class RecordsController < ApplicationController
     @record_address = RecordAddress.new
   end
 
-  def new
-    @record_address = RecordAddress.new
-  end
+  
 
   def create
     set_item
@@ -29,7 +27,7 @@ class RecordsController < ApplicationController
   def current_item
     @current_item ||= Item.find(params[:item_id])
   end
-  end
+  
 
  private
  def record_params
@@ -59,5 +57,5 @@ def set_item
   @item = Item.find(params[:item_id])
 end
 
-# end
+
 
