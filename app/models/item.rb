@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
+ 
   belongs_to :user
-  #has_one :record
+  has_one :record
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -18,4 +19,12 @@ class Item < ApplicationRecord
   validates :region_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :require_time_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+
+  
+
+
+  def sold_out?
+    Record.exists?(item_id: self.id)
+  end
+
 end
