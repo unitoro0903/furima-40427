@@ -11,7 +11,7 @@ class RecordAddress
     # validates :record_id
     validates :token
     validates :postal_code,  format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は「3桁ハイフン4桁」の半角文字列で入力してください" }
-    validates :region_id,  numericality: { other_than: 0 , message: "を選択してください" }
+    validates :region_id,  numericality: { other_than: 1 , message: "を選択してください" }
     validates :city
     validates :house_number
     validates :phone_number, length: { in: 10..11 }, format: { with: /\A[0-9]+\z/, message: "は半角数値のみ入力してください" }
